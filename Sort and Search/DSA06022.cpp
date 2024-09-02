@@ -14,26 +14,21 @@ _sinusoid_()
 	cin >> tc;
 	while(tc--)
 	{
-		int s, d;
-		cin >> s >> d;
-		if(s == 0 && d == 1)
-			cout << 0;
-		if(s == 0 || d < s / 9)
+		int n;
+		cin >> n;
+		int a[n];
+		for(int i = 0; i < n; ++i)
+			cin >> a[i];
+		sort(a, a + n);
+		if(a[0] == a[n - 1])
 			cout << -1;
 		else
 		{
-    		s--;
-    		string n;
-    		n = string(s / 9, '9');
-    		d -= s / 9;
-    		if(s % 9 > 0)
-    		{
-    			n = to_string(s % 9) + n;
-    			d--;
-    		}
-    		n = string(d, '0') + n;
-    		n[0]++;
-    		cout << n;
+			cout << a[0] << " "; 
+			int idx = 1;
+			while(a[idx] == a[idx - 1])
+				idx++;
+			cout << a[idx];
 		}
 		cout << endl;
 	}
